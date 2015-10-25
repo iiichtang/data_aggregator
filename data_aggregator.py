@@ -33,6 +33,10 @@ def insert_into_board_manager(data_list, timestamp=None):
     pass
 
 
+def insert_into_board_category(data_list, timestamp=None):
+    pass
+
+
 def insert_into_like_counts(data_list, timestamp=None):
     pass
 
@@ -50,6 +54,10 @@ def insert_into_comment_counts(data_list, timestamp=None):
 
 
 def insert_into_article_counts(data_list, timestamp=None):
+    pass
+
+
+def insert_into_overall_statistics(data_list, timestamp=None):
     pass
 
 
@@ -80,7 +88,8 @@ INSERT_TABLE_DICT = {"board": insert_into_board,
                      "shareCounts": insert_into_share_counts,
                      "commentCounts": insert_into_comment_counts,
                      "articleCounts": insert_into_article_counts,
-                     "board_managers": insert_into_board_manager}
+                     "board_managers": insert_into_board_manager,
+                     "overall_statistics": insert_into_overall_statistics}
 
 FUNCTION_DICT = {"likeCounts": aggregate_like_count,
                  "talkAboutCounts": aggregate_talk_about_count,
@@ -95,17 +104,16 @@ def insert_function(attribute_type, data_list, timestamp=None):
         return strategy(data_list, timestamp)
 
 
-def aggregate_function(attribute_type, fb_id, start_date, end_date):
+def aggregate_function(attribute_type, board_id, start_date, end_date):
     if FUNCTION_DICT.has_key(attribute_type):
         strategy = FUNCTION_DICT[attribute_type]
-        return strategy(fb_id, start_date, end_date)
+        return strategy(board_id, start_date, end_date)
 
 
 if __name__ == "__main__":
     insert_function("board_managers",
-                    [{"fb_id":"0001", "user_id": "user0001"},{"fb_id":"0002", "user_id": "user0002"}],
+                    [{"board_id": "0001", "count": "15"}, {"board_id": "0002", "count": "59"}],
                     timestamp="2015-10-25-14:00:15")
 
     aggregate_function("likeCounts", "0001", "2015-01-01", "2015-10-25")
-
     pass
