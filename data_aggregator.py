@@ -157,7 +157,6 @@ def aggregate_function(attribute_type, board_id=None, start_time=None, end_time=
 
 if __name__ == "__main__":
     insert_function("board_managers",
-                    [{"board_id": "0001", "count": "15", "timestamp": "2015-10-22 12:43:43"}])
-    insert_function("overall_statistics", [])
+                    ["0001", "15", "2015-10-22 12:43:43"])
 
     aggregate_function("likeCounts", "0001", "2015-01-01", "2015-10-25")
