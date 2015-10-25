@@ -105,4 +105,7 @@ if __name__ == "__main__":
     insert_function("board_managers",
                     [{"fb_id":"0001", "user_id": "user0001"},{"fb_id":"0002", "user_id": "user0002"}],
                     timestamp="2015-10-25-14:00:15")
+
+    aggregate_function("likeCounts", "0001", "2015-01-01", "2015-10-25")
+
     pass
