@@ -21,6 +21,9 @@ crawler_session = crawler_Session()
 viral_session = viral_Session()
 
 
+"""
+the insert functions need to check if the data is valid before insert into table
+"""
 def insert_into_board(data_list):
     # insert / update the board information in viralrank
     pass
@@ -71,6 +74,9 @@ def insert_into_overall_statistics(data_list):
     pass
 
 
+"""
+the get or aggregate functions will gather and calculate necessary data from crawler table, and return a list of data for insertion latter
+"""
 def get_board(board_id, start_time=None, end_time=None):
     # fetch the board information in crawler
     pass
