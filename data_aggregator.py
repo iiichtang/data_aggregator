@@ -31,87 +31,87 @@ def insert_into_board_current_state(data_list, timestamp=None):
     pass
 
 
-def insert_into_board_manager(data_list, timestamp=None):
+def insert_into_board_manager(data_list, timestamp):
     # insert / update the manager counts in viralrank
     pass
 
 
-def insert_into_board_category(data_list, timestamp=None):
+def insert_into_board_category(data_list, timestamp):
     # insert the categories of boards
     pass
 
 
-def insert_into_like_counts(data_list, timestamp=None):
+def insert_into_like_counts(data_list, timestamp):
     # insert the like counts of boards
     pass
 
 
-def insert_into_talk_about_counts(data_list, timestamp=None):
+def insert_into_talk_about_counts(data_list, timestamp):
     # insert the talk-about counts of boards
     pass
 
 
-def insert_into_share_counts(data_list, timestamp=None):
+def insert_into_share_counts(data_list, timestamp):
     # insert the share counts of boards
     pass
 
 
-def insert_into_comment_counts(data_list, timestamp=None):
+def insert_into_comment_counts(data_list, timestamp):
     # insert the comment counts of boards
     pass
 
 
-def insert_into_article_counts(data_list, timestamp=None):
+def insert_into_article_counts(data_list, timestamp):
     # insert the article count of boards
     pass
 
 
-def insert_into_overall_statistics(data_list, timestamp=None):
+def insert_into_overall_statistics(data_list, timestamp):
     # insert / update the overall_statistics of viralrank
     pass
 
 
-def get_board(board_id, start_date, end_date):
+def get_board(board_id, start_time=None, end_time=None):
     # fetch the board information in crawler
     pass
 
 
-def aggregate_board_current_state(board_id, start_date, end_date):
+def aggregate_board_current_state(board_id, start_time, end_time):
     # aggregate the current state of boards
     pass
 
 
-def get_board_managers(board_id, start_date, end_date):
+def get_board_managers(board_id, start_time=None, end_time=None):
     # fetch the manager count of boards in crawler
     pass
 
 
-def aggregate_like_count(board_id, start_date, end_date):
+def aggregate_like_count(board_id, start_time, end_time):
     # aggregate the like count of boards
     pass
 
 
-def aggregate_talk_about_count(board_id, start_date, end_date):
+def aggregate_talk_about_count(board_id, start_time, end_time):
     # aggregate the talk about count of boards
     pass
 
 
-def aggregate_article_count(board_id, start_date, end_date):
+def aggregate_article_count(board_id, start_time, end_time):
     # aggregate the article count of boards
     pass
 
 
-def aggregate_share_count(board_id, start_date, end_date):
+def aggregate_share_count(board_id, start_time, end_time):
     # aggregate the share count of boards
     pass
 
 
-def aggregate_comment_count(board_id, start_date, end_date):
+def aggregate_comment_count(board_id, start_time, end_time):
     # aggregate the comment count of boards
     pass
 
 
-def aggregate_overall_statistic(board_id=None, start_date=None, end_date=None):
+def aggregate_overall_statistic(board_id=None, start_time=None, end_time=None):
     # aggregate the overall statistics
     pass
 
@@ -143,16 +143,16 @@ def insert_function(attribute_type, data_list, timestamp=None):
         return strategy(data_list, timestamp)
 
 
-def aggregate_function(attribute_type, board_id, start_date, end_date):
+def aggregate_function(attribute_type, board_id=None, start_time=None, end_time=None):
     if FUNCTION_DICT.has_key(attribute_type):
         strategy = FUNCTION_DICT[attribute_type]
-        return strategy(board_id, start_date, end_date)
+        return strategy(board_id, start_time, end_time)
 
 
 if __name__ == "__main__":
     insert_function("board_managers",
                     [{"board_id": "0001", "count": "15"}, {"board_id": "0002", "count": "59"}],
                     timestamp="2015-10-25-14:00:15")
+    insert_function("overall_statistics", [])
 
     aggregate_function("likeCounts", "0001", "2015-01-01", "2015-10-25")
-    pass
